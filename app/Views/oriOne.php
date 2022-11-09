@@ -5,14 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strona startowa</title>
+    <title>Ori 1</title>
 </head>
 
 <body>
-    <p>Dobre niedobrego początki</p>
-    <p>Valerii123</p>
-    <p>Pawel123</p>
-    <a href="/OriOne">Contacts</a>
+    <p>Strona z pierwszej części ori</p>
 </body>
 
 </html>
