@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strona startowa</title>
+    <title>Nie zalogowano</title>
 </head>
 
 <body>
-    <p>Landing page</p>
-    <a href="/Login">Zaloguj się</a>
+    <p>Nie zalogowano</p>
 </body>
 
 </html>
