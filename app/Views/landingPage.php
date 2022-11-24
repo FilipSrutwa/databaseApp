@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="pl">
+<?= $this->extend('layouts/topBottom') ?>
+<?= $this->section('content') ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strona startowa</title>
-</head>
-
-<body>
+<div>
     <p>Landing page</p>
     <a href="/Login">Zaloguj się</a>
-</body>
 
-</html>
+</div>
+<?= $this->endSection() ?>

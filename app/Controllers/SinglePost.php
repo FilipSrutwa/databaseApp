@@ -2,10 +2,10 @@
 
 namespace App\Controllers;
 
-class OriOne extends BaseController
+class SinglePost extends BaseController
 {
     public function getIndex()
     {
-        return view("oriOne");
+        return view("singlePost");
     }
 }

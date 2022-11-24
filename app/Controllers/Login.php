@@ -16,7 +16,7 @@ class Login extends BaseController
         if (empty($user))
             return view("wrongData");
         else {
-            return redirect()->to("oriOne");
+            return redirect()->to("singlePost");
         }
     }
 
