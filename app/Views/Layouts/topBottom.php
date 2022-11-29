@@ -5,6 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 ?>
+<!--LAYOUT Z UZUPELNIONA GORA I DOLEM!-->
 
 <head>
     <meta charset="UTF-8">
@@ -15,13 +16,19 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-<body class="container">
+<body>
+    <!--
+        TUTAJ WRZUĆ SOBIE NAVBAR    
+    !-->
 
     <div class="content" style="height: 80vh;">
         <?= $this->renderSection('content') ?>
     </div>
 
     <div class="footer align-items-center justify-content-center bg-dark text-light text-center fixed-bottom" style="height: 5vh;">
+        <!--
+        To jest przygotowany div na stopke, mozesz zmienic lub zostawic    
+    !-->
         <p style="font-size: 2.5vh;">Strona Valerka i Fifiego</p>
     </div>
 
