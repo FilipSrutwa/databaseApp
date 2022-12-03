@@ -16,7 +16,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-<body style="background-image: url('images/background.jpg'); background-repeat:no-repeat;background-size: cover;">
+<body style="background-image: url('/images/background.jpg'); background-repeat:no-repeat;background-size: cover;">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between p-2 border-bottom">
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="/" class="nav-link px-2 link-light">Home</a></li>
