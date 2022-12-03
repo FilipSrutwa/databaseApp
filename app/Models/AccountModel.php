@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class LoginModel extends Model
+class AccountModel extends Model
 {
     protected $table      = 'konta';
     protected $primaryKey = 'ID';
@@ -12,14 +12,14 @@ class LoginModel extends Model
     protected $useAutoIncrement = true;
 
     protected $returnType     = 'array';
-    //protected $useSoftDeletes = true;
+    protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['Login', 'Haslo', 'Email', 'ID_typu_konta'];
+    protected $allowedFields = ['Login', 'Haslo', 'Email', 'ID_typu_konta', 'Name'];
 
-    //protected $useTimestamps = false;
-    //protected $createdField  = 'created_at';
-    //protected $updatedField  = 'updated_at';
-    //protected $deletedField  = 'deleted_at';
+    protected $useTimestamps = true;
+    protected $createdField  = 'Created_at';
+    protected $updatedField  = 'Updated_at';
+    protected $deletedField  = 'Deleted_at';
 
     //protected $validationRules    = [];
     //protected $validationMessages = [];

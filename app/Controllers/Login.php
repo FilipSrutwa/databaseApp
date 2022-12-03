@@ -2,7 +2,8 @@
 
 namespace App\Controllers;
 
-use App\Models\LoginModel;
+use App\Models\AccountModel;
+use CodeIgniter\Session\Session;
 
 class Login extends BaseController
 {
@@ -13,11 +14,19 @@ class Login extends BaseController
     public function postIndex()
     {
         $user = $this->checkLogin($_POST['pLogin'], $_POST['pPassword']);
-        if (empty($user))
-            return view("wrongData");
-        else {
-            return redirect()->to("singlePost");
+        if (empty($user)) {
+            $data = [
+                'wrongPassword' => 'true',
+            ];
+
+            return view("loginPage", $data);
         }
+
+        session_start();
+        $_SESSION['loggedIn'] = "yes";
+        $_SESSION['userName'] = $user['Name'];
+
+        return redirect()->to(site_url());
     }
 
     /**
@@ -27,10 +36,9 @@ class Login extends BaseController
      */
     private function checkLogin($login, $password)
     {
-        $db = \Config\Database::connect();
-        $query = $db->query("SELECT `Login`,`Haslo`,`ID_typu_konta` FROM konta INNER JOIN typy_kont ON typy_kont.ID = ID_typu_konta WHERE Login = '$login' AND Haslo = '$password'");
-        $result = $query->getRow();
+        $model = new AccountModel();
+        $user = $model->where('login', $login)->where('haslo', $password)->first();
 
-        return $result;
+        return $user;
     }
 }

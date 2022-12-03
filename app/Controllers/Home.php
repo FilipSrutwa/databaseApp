@@ -6,6 +6,9 @@ class Home extends BaseController
 {
     public function index()
     {
-        return view("landingPage");
+        $data = [
+            'title' => 'OriFandom - Home',
+        ];
+        return view("landingPage", $data);
     }
 }
