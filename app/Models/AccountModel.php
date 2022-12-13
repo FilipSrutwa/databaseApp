@@ -14,7 +14,7 @@ class AccountModel extends Model
     protected $returnType     = 'array';
     protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['Login', 'Haslo', 'Email', 'ID_typu_konta', 'Name'];
+    protected $allowedFields = ['ID', 'Login', 'Haslo', 'Email', 'ID_typu_konta', 'Name'];
 
     protected $useTimestamps = true;
     protected $createdField  = 'Created_at';

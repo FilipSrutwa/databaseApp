@@ -1,6 +1,9 @@
 <?= $this->extend('layouts/topBottom') ?>
 <?= $this->section('content') ?>
+<!--
+DODAJ MIEJSCE NA KOMENTARZE
 
+-->
 <div class="container-fluid text-center pb-5">
     <div class="row content">
         <div class="col-sm-1 sidenav"></div>

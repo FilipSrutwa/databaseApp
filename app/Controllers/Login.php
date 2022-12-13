@@ -25,7 +25,8 @@ class Login extends BaseController
         session_start();
         $_SESSION['loggedIn'] = "yes";
         $_SESSION['userName'] = $user['Name'];
-
+        $_SESSION['userEmail'] = $user['Email'];
+        $_SESSION['userID'] = $user['ID'];
         return redirect()->to(site_url());
     }
 
