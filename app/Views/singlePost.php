@@ -31,7 +31,7 @@ DODAJ MIEJSCE NA KOMENTARZE
             
             <div class="p-2"> <!-- Dodanie nowego komentaża -->
                 <div class="d-flex flex-row align-items-start">
-                    <textarea class="form-control textarea bg-dark mt-4">
+                    <textarea class="form-control textarea bg-dark mt-4" style="color:white;">
                     </textarea>
                 </div>
                 <div class="mt-2 text-end">
