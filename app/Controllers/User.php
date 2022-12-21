@@ -46,7 +46,8 @@ class User extends BaseController
         $foundUser = $user->where('ID', $userID);
         if ($foundUser != null) {
             $foundUser->delete();
-            //usun sesje
+            session_start();
+            session_destroy();
             return redirect()->to(site_url());
         } else {
             return view("errorPage");

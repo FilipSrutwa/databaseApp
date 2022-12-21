@@ -23,17 +23,15 @@ if (session_status() === PHP_SESSION_NONE) {
             <?php
             if (isset($_SESSION['loggedIn'])) {
                 echo "<li><a href='/User' class='nav-link px-2 link-light'>Użytkownik</a></li>";
+                echo "<li><a href='/UserReport' class='nav-link px-2 link-light'>Wyślij uwagę</a></li>";
             }
             ?>
-            <li><a href="#" class="nav-link px-2 link-light">#</a></li>
-            <li><a href="#" class="nav-link px-2 link-light">#</a></li>
-            <li><a href="#" class="nav-link px-2 link-light">#</a></li>
         </ul>
         <div class="text-end">
             <?php
-            if (isset($_SESSION['loggedIn']))
+            if (isset($_SESSION['loggedIn'])) {
                 echo "<a href='/Logout' class='btn btn-outline-primary me-2 mr-2'>Wyloguj się </a>";
-            else {
+            } else {
                 echo "<a href='/Login' class='btn btn-outline-primary me-2 mr-2'>Zaloguj się</a>";
                 echo "<a href='/Register' class='btn btn-primary'>Zarejestruj się</a>";
             }

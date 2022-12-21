@@ -1,23 +1,20 @@
 <?= $this->extend('layouts/topBottom') ?>
 <?= $this->section('content') ?>
-<!--
-Dodaj tu jakiegos CSS
-Ma być tutaj:
-- wyświetlenie danych uzytkownika: email i nazwa uzytkownika
-- przycisk z usunieciem konta (KONIECZNIE MA SIE WYSWIETLIC MODAL Z PYTANIEM O POTWIERDZENIE)
--->
+
 <?php
 if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+  session_start();
 }
 ?>
 <section class="h-75">
   <div class="container py-2 h-100">
     <div class="row d-flex justify-content-center mt-5 h-100">
-      <div class="col col-xl-10"> <!-- zmienić ogólną szerokość okienka można tutaj "col-xl-10"-->
+      <div class="col col-xl-10">
+        <!-- zmienić ogólną szerokość okienka można tutaj "col-xl-10"-->
         <div class="card" style="border-radius: 1rem;">
           <div class="row g-0">
-            <div class="col-md-12 d-flex align-items-center"><!--blok danych osobistych mam 4 columny do przycisku usun-->
+            <div class="col-md-12 d-flex align-items-center">
+              <!--blok danych osobistych mam 4 columny do przycisku usun-->
               <div class="card-body p-4 p-lg-5 text-black">
                 <div class="d-flex align-items-center mb-3 pb-1">
                   <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
@@ -38,10 +35,6 @@ if (session_status() === PHP_SESSION_NONE) {
                   <a class="btn btn-dark btn-lg btn-block" href="/User/changePassword">Przejdz do zmiany hasla</a>
                 </div>
 
-                <div class="form-outline mb-4">
-                  <a class="btn btn-dark btn-lg btn-block" href="/User/deleteUser/<?= $_SESSION['userID'] ?>">Usuń hasło</a>
-                </div>
-
                 <div class="form-outline mb-4 text-end">
                   <a class="btn btn-outline-danger btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#myModal">Usuń konto</a>
                 </div>
@@ -57,10 +50,10 @@ if (session_status() === PHP_SESSION_NONE) {
                         </button>
                       </div>
                       <div class="modal-body">
-                        Czy naprawde chcesz usunąć konto?
+                        Czy na pewno chcesz usunąć konto?
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zamknij</button>
                         <a type="button" class="btn btn-outline-danger" href="/User/deleteUser/<?= $_SESSION['userID'] ?>">Usuń konto</a>
                       </div>
                     </div>
