@@ -24,6 +24,7 @@ if (session_status() === PHP_SESSION_NONE) {
             if (isset($_SESSION['loggedIn'])) {
                 echo "<li><a href='/User' class='nav-link px-2 link-light'>Użytkownik</a></li>";
                 echo "<li><a href='/UserReport' class='nav-link px-2 link-light'>Wyślij uwagę</a></li>";
+                echo "<li><a href='/PendingPosts' class='nav-link px-2 link-light'>Oczekujące posty</a></li>";
             }
             ?>
         </ul>
