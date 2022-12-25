@@ -24,8 +24,11 @@ if (session_status() === PHP_SESSION_NONE) {
             if (isset($_SESSION['loggedIn'])) {
                 echo "<li><a href='/User' class='nav-link px-2 link-light'>Użytkownik</a></li>";
                 echo "<li><a href='/UserReport' class='nav-link px-2 link-light'>Wyślij uwagę</a></li>";
+                echo "<li><a href='/UserReport/BrowseUsersReports' class='nav-link px-2 link-light'>Uwagi użytkowników</a></li>";
                 echo "<li><a href='/PendingPosts' class='nav-link px-2 link-light'>Oczekujące posty</a></li>";
                 echo "<li><a href='/CreatePost' class='nav-link px-2 link-light'>Dodaj post</a></li>";
+                echo "<li><a href='/AdminReport' class='nav-link px-2 link-light'>Wyślij wniosek administratora</a></li>";
+                echo "<li><a href='/AdminReport/BrowseAdminsReports' class='nav-link px-2 link-light'>Uwagi administratorów</a></li>";
             }
             ?>
         </ul>
@@ -45,12 +48,8 @@ if (session_status() === PHP_SESSION_NONE) {
         <?= $this->renderSection('content') ?>
     </div>
 
-    <div class="footer align-items-center justify-content-center bg-dark text-light text-center fixed-bottom" style="height: 5vh;">
-        <!--
-        To jest przygotowany div na stopke, mozesz zmienic lub zostawic    
-        !-->
-        <p style="font-size: 2.5vh;">Strona Valerka i Fifiego</p>
-    </div>
+    <!--TUTAJ MOŻESZ DODAĆ STOPKĘ,
+    ALE NIE MUSISZ, STRONA I TAK WYGLĄDA DOBRZE-->
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>

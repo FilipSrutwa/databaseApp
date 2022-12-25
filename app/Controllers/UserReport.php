@@ -25,4 +25,21 @@ class UserReport extends BaseController
 
         return redirect()->to("/UserReport");
     }
+
+    public function getBrowseUsersReports()
+    {
+        $userReports = new UserReportModel();
+        $data = [
+            'dataToShow' => $userReports->findAll()
+        ];
+        return view("browseUsersReportsPage", $data);
+    }
+
+    public function postBrowseUsersReports()
+    {
+        $reportToDelete = new UserReportModel();
+        $reportToDelete->delete($_POST['pReportID']);
+
+        return redirect()->to('UserReport/BrowseUsersReports');
+    }
 }
