@@ -21,15 +21,31 @@ if (session_status() === PHP_SESSION_NONE) {
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="/" class="nav-link px-2 link-light">Home</a></li>
             <?php
-            if (isset($_SESSION['loggedIn'])) {
-                echo "<li><a href='/User' class='nav-link px-2 link-light'>Użytkownik</a></li>";
-                echo "<li><a href='/UserReport' class='nav-link px-2 link-light'>Wyślij uwagę</a></li>";
-                echo "<li><a href='/UserReport/BrowseUsersReports' class='nav-link px-2 link-light'>Uwagi użytkowników</a></li>";
-                echo "<li><a href='/PendingPosts' class='nav-link px-2 link-light'>Oczekujące posty</a></li>";
-                echo "<li><a href='/CreatePost' class='nav-link px-2 link-light'>Dodaj post</a></li>";
-                echo "<li><a href='/AdminReport' class='nav-link px-2 link-light'>Wyślij wniosek administratora</a></li>";
-                echo "<li><a href='/AdminReport/BrowseAdminsReports' class='nav-link px-2 link-light'>Uwagi administratorów</a></li>";
+            if (!isset($_SESSION['rights'])) {
+            } else {
+                $arr = explode(";", $_SESSION['rights']);
+                $foundHeadAdmin = 0;
+
+                if ($_SESSION['rights'] == "headAdmin")
+                    $foundHeadAdmin =  1;
+
+                if (isset($_SESSION['loggedIn'])) {
+                    echo "<li><a href='/User' class='nav-link px-2 link-light'>Użytkownik</a></li>";
+                    if (in_array("1", $arr) || $foundHeadAdmin == 1)
+                        echo "<li><a href='/UserReport' class='nav-link px-2 link-light'>Wyślij uwagę</a></li>";
+                    if (in_array("4", $arr) || $foundHeadAdmin == 1)
+                        echo "<li><a href='/UserReport/BrowseUsersReports' class='nav-link px-2 link-light'>Uwagi użytkowników</a></li>";
+                    if (in_array("3", $arr) || $foundHeadAdmin == 1)
+                        echo "<li><a href='/PendingPosts' class='nav-link px-2 link-light'>Oczekujące posty</a></li>";
+                    if (in_array("6", $arr) || $foundHeadAdmin == 1)
+                        echo "<li><a href='/CreatePost' class='nav-link px-2 link-light'>Dodaj post</a></li>";
+                    if (in_array("2", $arr) || $foundHeadAdmin == 1)
+                        echo "<li><a href='/AdminReport' class='nav-link px-2 link-light'>Wyślij wniosek administratora</a></li>";
+                    if ($foundHeadAdmin == 1)
+                        echo "<li><a href='/AdminReport/BrowseAdminsReports' class='nav-link px-2 link-light'>Uwagi administratorów</a></li>";
+                }
             }
+
             ?>
         </ul>
         <div class="text-end">
