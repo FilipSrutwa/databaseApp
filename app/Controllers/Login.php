@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\AccountModel;
+use App\Models\RightsModel;
 use CodeIgniter\Session\Session;
 
 class Login extends BaseController
@@ -14,6 +15,7 @@ class Login extends BaseController
     public function postIndex()
     {
         $user = $this->checkLogin($_POST['pLogin'], $_POST['pPassword']);
+
         if (empty($user)) {
             $data = [
                 'wrongPassword' => 'true',
@@ -22,11 +24,15 @@ class Login extends BaseController
             return view("loginPage", $data);
         }
 
+        $rights = $this->grabRights($user['ID_typu_konta']);
+
         session_start();
         $_SESSION['loggedIn'] = "yes";
         $_SESSION['userName'] = $user['Name'];
         $_SESSION['userEmail'] = $user['Email'];
         $_SESSION['userID'] = $user['ID'];
+        $_SESSION['rights'] = $rights;
+
         return redirect()->to(site_url());
     }
 
@@ -41,5 +47,20 @@ class Login extends BaseController
         $user = $model->where('login', $login)->where('haslo', $password)->first();
 
         return $user;
+    }
+    private function grabRights($acc_type)
+    {
+        if ($acc_type == 1) //jezeli typ konta = 1, wowczas to admin ktory ma zawsze wszystkie prawa
+            return "headAdmin";
+
+        $stringOfRights = ""; //string przechowujacy id wszystkich praw, np,: "1;2;3;4;5;" ; do odkodowania przy pomocy funkcji explode
+        $db = \Config\Database::connect();
+        $query = $db->query("SELECT ID_uprawnienia FROM uprawnienia_typy WHERE Login_type = '$acc_type'");
+
+        $results = $query->getResultArray();
+        foreach ($results as $row)
+            $stringOfRights .= $row['Right_id'] . ";";
+
+        return $stringOfRights;
     }
 }
