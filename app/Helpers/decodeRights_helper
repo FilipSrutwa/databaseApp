@@ -1,0 +1,16 @@
+<?php
+function decodeRights($stringOfRights, $targetRight) //zwraca 1 jesli znaleziono szukane prawo lub 0 jesli nie znaleziono
+{
+    $arr = explode(";", $stringOfRights);
+    $found = 0;
+
+    if ($stringOfRights == "headAdmin")
+        return 1;
+    foreach ($arr as $right) {
+        if ($right == $targetRight) {
+            $found = 1;
+            break;
+        }
+    }
+    return $found;
+}

@@ -55,11 +55,11 @@ class Login extends BaseController
 
         $stringOfRights = ""; //string przechowujacy id wszystkich praw, np,: "1;2;3;4;5;" ; do odkodowania przy pomocy funkcji explode
         $db = \Config\Database::connect();
-        $query = $db->query("SELECT ID_uprawnienia FROM uprawnienia_typy WHERE Login_type = '$acc_type'");
+        $query = $db->query("SELECT ID_uprawnienia FROM uprawnienia_typy WHERE ID_typy_kont = '$acc_type'");
 
         $results = $query->getResultArray();
         foreach ($results as $row)
-            $stringOfRights .= $row['Right_id'] . ";";
+            $stringOfRights .= $row['ID_uprawnienia'] . ";";
 
         return $stringOfRights;
     }

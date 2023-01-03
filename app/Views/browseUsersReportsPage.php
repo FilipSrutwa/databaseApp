@@ -1,7 +1,8 @@
 <?= $this->extend('layouts/topBottom') ?>
 <?= $this->section('content') ?>
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE)
+  session_start();
 ?>
 <div class="container-fluid d-flex flex-row flex-wrap">
   <?php

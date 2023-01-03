@@ -24,6 +24,12 @@ class Filters extends BaseConfig
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         'isLoggedIn'    => \App\Filters\UserFilter::class,
+        'userReport'    => \App\Filters\UserReportFilter::class,
+        'browseUserReport'  => \App\Filters\BrowseUserReportsFilter::class,
+        'pendingPosts'  => \App\Filters\PendingPostsFilter::class,
+        'createPost'    => \App\Filters\CreatePostFilter::class,
+        'createAdminReport'    => \App\Filters\AdminReportFilter::class,
+        'browseAdminReports'    => \App\Filters\BrowseAdminReportsFilter::class,
     ];
 
     /**
@@ -70,5 +76,12 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $filters = [];
+    public $filters = [
+        'userReport' => ['before' => ['UserReport']],
+        'browseUserReport' => ['before' => ['UserReport/*']],
+        'pendingPosts' => ['before' => ['PendingPosts', 'PendingPosts/*']],
+        'createPost' => ['before' => ['CreatePost', 'CreatePost/*']],
+        'createAdminReport' => ['before' => ['AdminReport']],
+        'browseAdminReports' => ['before' => ['AdminReport/*']],
+    ];
 }
