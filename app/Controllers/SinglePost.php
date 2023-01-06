@@ -36,7 +36,7 @@ class SinglePost extends BaseController
         ];
         $comment->save($dataToSave);
 
-        return redirect()->to('SinglePost/' . $_POST['pPostID'] . '');
+        return redirect()->to('SinglePost/post/' . $postID . '');
     }
 
     public function grabPost($postID)
