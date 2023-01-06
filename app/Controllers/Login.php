@@ -41,12 +41,14 @@ class Login extends BaseController
      * Jesli tak - zwraca jego login, haslo i ID typu konta
      * Jesli nie, zwraca puste
      */
-    private function checkLogin($login, $password)
+    private function checkLogin($login, $pPassword)
     {
         $model = new AccountModel();
-        $user = $model->where('login', $login)->where('haslo', $password)->first();
-
-        return $user;
+        $user = $model->where('login', $login)->first();
+        $passwordFromDB = $user['Haslo'];
+        if (password_verify($pPassword, $passwordFromDB))
+            return $user;
+        else return null;
     }
     private function grabRights($acc_type)
     {

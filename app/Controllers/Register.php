@@ -35,13 +35,15 @@ class Register extends BaseController
      * Sprawdza czy mozna zalozyc konto,
      * jesli nie to nie zapisuje
      */
-    private function saveModel($login, $password, $email, $name)
+    private function saveModel($login, $pPassword, $email, $name)
     {
         $model = new AccountModel();
         $user = $model->where('login', $login)->first();
 
         if (!empty($user))
             return null;
+
+        $password = password_hash($pPassword, PASSWORD_DEFAULT);
 
         $data = [
             'Login' => $login,

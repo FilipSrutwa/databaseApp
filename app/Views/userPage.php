@@ -35,9 +35,12 @@ if (session_status() === PHP_SESSION_NONE) {
                   <a class="btn btn-dark btn-lg btn-block" href="/User/changePassword">Przejdz do zmiany hasla</a>
                 </div>
 
-                <div class="form-outline mb-4 text-end">
-                  <a class="btn btn-outline-danger btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#myModal">Usuń konto</a>
-                </div>
+                <?php
+                if ($_SESSION['rights'] != "headAdmin")
+                  echo '<div class="form-outline mb-4 text-end">
+                        <a class="btn btn-outline-danger btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#myModal">Usuń konto</a>
+                        </div>';
+                ?>
 
                 <!-- modal window====================================-->
                 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modatl-title" aria-hidden="true">

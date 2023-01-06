@@ -23,8 +23,9 @@ class User extends BaseController
     public function postChangePassword()
     {
         $user = new AccountModel();
-        $foundUser = $user->where('ID', $_POST['pID'])->where('Haslo', $_POST['pPassword'])->first();
-        if ($foundUser == null) {
+        $foundUser = $user->where('ID', $_POST['pID'])->first();
+        $checkPassword = password_verify($_POST['pPassword'], $foundUser['Haslo']);
+        if (!$checkPassword) {
             $data = [
                 'wrongPassword' => 'true',
             ];
@@ -32,9 +33,9 @@ class User extends BaseController
             return view("changePassword", $data);
         } else {
             $data = [
-                'Haslo' => $_POST['pNewPassword'],
+                'Haslo' => password_hash($_POST['pNewPassword'], PASSWORD_DEFAULT),
             ];
-            $foundUser->update($_POST['pID'], $data);
+            $user->update($_POST['pID'], $data);
         }
 
         return view("userPage");
